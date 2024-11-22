@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starting with the Familiar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            font-size: 150%;
+        }
+        section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+        h1, h3, h4 {
+            color: #333;
+            margin-top: 20px;
+        }
+        p, li {
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .image-placeholder, .interactive-placeholder, .continue-button, .vocab-section, .why-it-matters, .test-your-knowledge, .faq-section {
+            text-align: left;
+        }
+        .image-placeholder img, .interactive-placeholder img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .vocab-section, .why-it-matters, .test-your-knowledge, .faq-section {
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .vocab-section {
+            background-color: #f0f8ff;
+        }
+        .vocab-section h3 {
+            color: #1e90ff;
+            font-size: 0.75em;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        .vocab-section h4 {
+            color: #000;
+            font-size: 0.9em;
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+        .vocab-term {
+            font-weight: bold;
+            color: #1e90ff;
+        }
+        .why-it-matters {
+            background-color: #ffe6f0;
+        }
+        .why-it-matters h3 {
+            color: #d81b60;
+            font-size: 0.75em;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        .why-it-matters h4 {
+            color: #000;
+            font-size: 0.9em;
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+        .continue-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            color: #ffffff;
+            background-color: #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .stop-and-think {
+            background-color: #e6e6ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .stop-and-think h3 {
+            color: #4b0082;
+            font-size: 0.75em;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        .stop-and-think h4 {
+            color: #000;
+            font-size: 0.9em;
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+        .reveal-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            color: #ffffff;
+            background-color: #4b0082;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <section id="section1">
+        <h1>Starting with the Familiar</h1>
+        <p>Let's begin our journey with something you already know well. Picture trying to predict house prices in your neighborhood. You've collected data about house sizes and their selling prices, and you're ready to build a linear regression model.</p>
+        <div class="continue-button" onclick="showNextSection(2)">Continue</div>
+    </section>
+
+    <section id="section2">
+        <p>In its simplest form, you know that linear regression gives you an equation that looks like this:</p>
+        <p>\[ y = mx + b \]</p>
+        <p>where you're trying to predict the price (y) based on the size (x). The slope (m) tells you how much the price increases for each additional square foot, and the intercept (b) might represent the basic value of the land.</p>
+        <div class="vocab-section">
+            <h3>Build Your Vocab</h3>
+            <h4>Linear Regression</h4>
+            <p>A statistical method that models the relationship between variables using a straight line. It's like drawing the 'best fit' line through your data points.</p>
+        </div>
+        <div class="continue-button" onclick="showNextSection(3)">Continue</div>
+    </section>
+
+    <section id="section3">
+        <p>You also know that finding the perfect values for m and b isn't just guesswork. We use the 'sum of squared errors' to find the best line:</p>
+        <p>\[ \text{Error} = \sum_{i=1}^n (y_i - (mx_i + b))^2 \]</p>
+        <div class="interactive-placeholder">
+            <img src="/placeholder.svg?height=300&width=600" alt="Interactive visualization where users can drag a line through scatter plot points and see the error value change in real-time">
+        </div>
+        <div class="stop-and-think">
+            <h3>Stop and Think</h3>
+            <h4>Before we move on, why do you think we square the errors instead of just adding them up?</h4>
+            <button class="reveal-button" onclick="revealAnswer()">Reveal Answer</button>
+            <p id="reveal-text" style="display: none;">Squaring does two clever things: it makes negative errors positive (so they don't cancel out), and it punishes big mistakes more than small ones. It's like telling our model 'being way off is really bad!'</p>
+        </div>
+        <div class="continue-button" onclick="showNextSection(4)">Continue</div>
+    </section>
+
+    <section id="section4">
+        <p>Now, here's where things get interesting. What if I told you that a neural network could do exactly the same thing? In fact, the simplest possible neural network is just linear regression in disguise! Let's see how.</p>
+        <div class="why-it-matters">
+            <h3>Why It Matters</h3>
+            <p>Understanding this connection is like finding a secret passage between two seemingly different worlds. It helps us see neural networks not as magical black boxes, but as natural extensions of the statistical tools we already know and trust.</p>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("section1").style.display = "block";
+        document.getElementById("section1").style.opacity = "1";
+
+        function showNextSection(nextSectionId) {
+            const currentButton = event.target;
+            const nextSection = document.getElementById("section" + nextSectionId);
+            
+            currentButton.style.display = "none";
+            
+            nextSection.style.display = "block";
+            setTimeout(() => {
+                nextSection.style.opacity = "1";
+            }, 10);
+
+            setTimeout(() => {
+                nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 500);
+        }
+
+        function revealAnswer() {
+            const revealText = document.getElementById("reveal-text");
+            const revealButton = document.querySelector(".reveal-button");
+            
+            revealText.style.display = "block";
+            revealButton.style.display = "none";
+        }
+    </script>
+</body>
+</html>
